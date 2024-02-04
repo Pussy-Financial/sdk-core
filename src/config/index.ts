@@ -1,5 +1,4 @@
 import { z } from 'zod'
-import { ChainId } from '../chains'
 import {
   PussyLibraryConfig,
   PussyLibraryConfigEnvVars,
@@ -47,5 +46,3 @@ if (PUSSY_LIBRARY_CONFIG instanceof Error) {
   console.error(PUSSY_LIBRARY_CONFIG)
   process.exit(1)
 }
-export const PUSSY_LIBRARY_CONFIG_CHAINS_MAINNET = PUSSY_LIBRARY_CONFIG.chains[ChainId.MAINNET]
-export const PUSSY_LIBRARY_CONFIG_CHAINS_HARDHAT = PUSSY_LIBRARY_CONFIG.chains[ChainId.HARDHAT]

@@ -1,8 +1,5 @@
 import { ChainId, SUPPORTED_CHAINS, SupportedChainsType } from './chains'
-import {
-  PUSSY_LIBRARY_CONFIG_CHAINS_HARDHAT,
-  PUSSY_LIBRARY_CONFIG_CHAINS_MAINNET
-} from './config'
+import { PUSSY_LIBRARY_CONFIG } from './config'
 
 type AddressMap = { [chainId: number]: string }
 
@@ -60,19 +57,22 @@ const DEFAULT_ADDRESSES: ChainAddresses = {
 
 // Inject values from PUSSY_LIBRARY_CONFIG here
 
+const PUSSY_LIBRARY_CONFIG_CHAINS_MAINNET = PUSSY_LIBRARY_CONFIG.chains[ChainId.MAINNET]
+const PUSSY_LIBRARY_CONFIG_CHAINS_HARDHAT = PUSSY_LIBRARY_CONFIG.chains[ChainId.HARDHAT]
+
 const MAINNET_ADDRESSES: ChainAddresses = {
   ...DEFAULT_ADDRESSES,
   v1MixedRouteQuoterAddress: '0x84E44095eeBfEC7793Cd7d5b57B7e401D7f1cA2E',
   ...(PUSSY_LIBRARY_CONFIG_CHAINS_MAINNET !== undefined
     ? {
-        v3CoreFactoryAddress: PUSSY_LIBRARY_CONFIG_CHAINS_MAINNET.addresses.v3CoreFactory,
-        multicallAddress: PUSSY_LIBRARY_CONFIG_CHAINS_MAINNET.addresses.multicall,
-        quoterAddress: PUSSY_LIBRARY_CONFIG_CHAINS_MAINNET.addresses.quoter,
-        v3MigratorAddress: PUSSY_LIBRARY_CONFIG_CHAINS_MAINNET.addresses.v3Migrator,
-        nonfungiblePositionManagerAddress: PUSSY_LIBRARY_CONFIG_CHAINS_MAINNET.addresses.nonfungiblePositionManager,
-        tickLensAddress: PUSSY_LIBRARY_CONFIG_CHAINS_MAINNET.addresses.tickLens,
-        swapRouter02Address: PUSSY_LIBRARY_CONFIG_CHAINS_MAINNET.addresses.swapRouter02,
-        v1MixedRouteQuoterAddress: PUSSY_LIBRARY_CONFIG_CHAINS_MAINNET.addresses.v1MixedRouteQuoter
+        v3CoreFactoryAddress: PUSSY_LIBRARY_CONFIG_CHAINS_MAINNET.contracts.ecosystem.v3CoreFactory.address,
+        multicallAddress: PUSSY_LIBRARY_CONFIG_CHAINS_MAINNET.contracts.ecosystem.multicall.address,
+        quoterAddress: PUSSY_LIBRARY_CONFIG_CHAINS_MAINNET.contracts.ecosystem.quoter.address,
+        v3MigratorAddress: PUSSY_LIBRARY_CONFIG_CHAINS_MAINNET.contracts.ecosystem.v3Migrator.address,
+        nonfungiblePositionManagerAddress: PUSSY_LIBRARY_CONFIG_CHAINS_MAINNET.contracts.ecosystem.nonfungiblePositionManager.address,
+        tickLensAddress: PUSSY_LIBRARY_CONFIG_CHAINS_MAINNET.contracts.ecosystem.tickLens.address,
+        swapRouter02Address: PUSSY_LIBRARY_CONFIG_CHAINS_MAINNET.contracts.ecosystem.swapRouter02.address,
+        v1MixedRouteQuoterAddress: PUSSY_LIBRARY_CONFIG_CHAINS_MAINNET.contracts.ecosystem.v1MixedRouteQuoter.address,
       }
     : {})
 }
@@ -81,14 +81,14 @@ const HARDHAT_ADDRESSES: ChainAddresses = {
   v1MixedRouteQuoterAddress: '0x84E44095eeBfEC7793Cd7d5b57B7e401D7f1cA2E',
   ...(PUSSY_LIBRARY_CONFIG_CHAINS_HARDHAT !== undefined
     ? {
-        v3CoreFactoryAddress: PUSSY_LIBRARY_CONFIG_CHAINS_HARDHAT.addresses.v3CoreFactory,
-        multicallAddress: PUSSY_LIBRARY_CONFIG_CHAINS_HARDHAT.addresses.multicall,
-        quoterAddress: PUSSY_LIBRARY_CONFIG_CHAINS_HARDHAT.addresses.quoter,
-        v3MigratorAddress: PUSSY_LIBRARY_CONFIG_CHAINS_HARDHAT.addresses.v3Migrator,
-        nonfungiblePositionManagerAddress: PUSSY_LIBRARY_CONFIG_CHAINS_HARDHAT.addresses.nonfungiblePositionManager,
-        tickLensAddress: PUSSY_LIBRARY_CONFIG_CHAINS_HARDHAT.addresses.tickLens,
-        swapRouter02Address: PUSSY_LIBRARY_CONFIG_CHAINS_HARDHAT.addresses.swapRouter02,
-        v1MixedRouteQuoterAddress: PUSSY_LIBRARY_CONFIG_CHAINS_HARDHAT.addresses.v1MixedRouteQuoter
+        v3CoreFactoryAddress: PUSSY_LIBRARY_CONFIG_CHAINS_HARDHAT.contracts.ecosystem.v3CoreFactory.address,
+        multicallAddress: PUSSY_LIBRARY_CONFIG_CHAINS_HARDHAT.contracts.ecosystem.multicall.address,
+        quoterAddress: PUSSY_LIBRARY_CONFIG_CHAINS_HARDHAT.contracts.ecosystem.quoter.address,
+        v3MigratorAddress: PUSSY_LIBRARY_CONFIG_CHAINS_HARDHAT.contracts.ecosystem.v3Migrator.address,
+        nonfungiblePositionManagerAddress: PUSSY_LIBRARY_CONFIG_CHAINS_HARDHAT.contracts.ecosystem.nonfungiblePositionManager.address,
+        tickLensAddress: PUSSY_LIBRARY_CONFIG_CHAINS_HARDHAT.contracts.ecosystem.tickLens.address,
+        swapRouter02Address: PUSSY_LIBRARY_CONFIG_CHAINS_HARDHAT.contracts.ecosystem.swapRouter02.address,
+        v1MixedRouteQuoterAddress: PUSSY_LIBRARY_CONFIG_CHAINS_HARDHAT.contracts.ecosystem.v1MixedRouteQuoter.address
       }
     : {})
 }

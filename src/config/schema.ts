@@ -8,15 +8,24 @@ export const SchemaPussyLibraryConfigEnvVars = z.object({
   NEXT_PUBLIC_PUSSY_LIBRARY_CONFIG: z.string()
 })
 
-const SchemaEcosystemAddresses = z.object({
-  v3CoreFactory: z.string(),
-  multicall: z.string(),
-  quoter: z.string(),
-  v3Migrator: z.string(),
-  nonfungiblePositionManager: z.string(),
-  tickLens: z.string(),
-  swapRouter02: z.string(),
-  v1MixedRouteQuoter: z.string()
+const SchemaContractData = z.object({
+  address: z.string(),
+})
+
+const SchemaContractsAll = z.object({
+  ecosystem: z.object({
+    v3CoreFactory: SchemaContractData,
+    multicall: SchemaContractData,
+    quoter: SchemaContractData,
+    v3Migrator: SchemaContractData,
+    nonfungiblePositionManager: SchemaContractData,
+    tickLens: SchemaContractData,
+    swapRouter02: SchemaContractData,
+    v1MixedRouteQuoter: SchemaContractData
+  }),
+  tokens: z.object({
+    weth: SchemaContractData
+  })
 })
 
 /**
@@ -25,10 +34,10 @@ const SchemaEcosystemAddresses = z.object({
 export const SchemaPussyLibraryConfig = z.object({
   chains: z.object({
     [ChainId.MAINNET]: z.object({
-      addresses: SchemaEcosystemAddresses
+      contracts: SchemaContractsAll
     }).optional(),
     [ChainId.HARDHAT]: z.object({
-      addresses: SchemaEcosystemAddresses
+      contracts: SchemaContractsAll
     }).optional()
   })
 })
