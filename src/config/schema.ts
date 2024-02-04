@@ -24,7 +24,11 @@ const SchemaContractsAll = z.object({
     v1MixedRouteQuoter: SchemaContractData
   }),
   tokens: z.object({
-    weth: SchemaContractData
+    weth: SchemaContractData,
+    usdc: SchemaContractData,
+    usdt: SchemaContractData,
+    wbtc: SchemaContractData,
+    dai: SchemaContractData,
   })
 })
 
