@@ -16,7 +16,9 @@ const tryParseEnvVarJSON = <T extends z.ZodType<any>>(schema: T, envVar: string)
 
 const parseLibraryConfigEnvVars = (): PussyLibraryConfigEnvVars | Error => {
   try {
-    const configEnvVars = SchemaPussyLibraryConfigEnvVars.parse(process.env)
+    const configEnvVars = SchemaPussyLibraryConfigEnvVars.parse({
+      NEXT_PUBLIC_PUSSY_LIBRARY_CONFIG: process.env.NEXT_PUBLIC_PUSSY_LIBRARY_CONFIG
+    })
     return configEnvVars
   } catch (error) {
     return new Error(`Failed to parse PussyLibraryConfigEnvVars: ${error}`)
@@ -43,6 +45,5 @@ export class PussyLibraryConfigFactory {
 
 export const PUSSY_LIBRARY_CONFIG: PussyLibraryConfig = PussyLibraryConfigFactory.fromEnv() as PussyLibraryConfig
 if (PUSSY_LIBRARY_CONFIG instanceof Error) {
-  console.error(PUSSY_LIBRARY_CONFIG)
-  process.exit(1)
+  throw PUSSY_LIBRARY_CONFIG
 }
