@@ -1,6 +1,5 @@
 import { ChainId, SUPPORTED_CHAINS, SupportedChainsType } from './chains'
 import {
-  PUSSY_LIBRARY_CONFIG,
   PUSSY_LIBRARY_CONFIG_CHAINS_HARDHAT,
   PUSSY_LIBRARY_CONFIG_CHAINS_MAINNET
 } from './config'
@@ -66,14 +65,14 @@ const MAINNET_ADDRESSES: ChainAddresses = {
   v1MixedRouteQuoterAddress: '0x84E44095eeBfEC7793Cd7d5b57B7e401D7f1cA2E',
   ...(PUSSY_LIBRARY_CONFIG_CHAINS_MAINNET !== undefined
     ? {
-        v3CoreFactoryAddress: PUSSY_LIBRARY_CONFIG_CHAINS_MAINNET.v3CoreFactory,
-        multicallAddress: PUSSY_LIBRARY_CONFIG_CHAINS_MAINNET.multicall,
-        quoterAddress: PUSSY_LIBRARY_CONFIG_CHAINS_MAINNET.quoter,
-        v3MigratorAddress: PUSSY_LIBRARY_CONFIG_CHAINS_MAINNET.v3Migrator,
-        nonfungiblePositionManagerAddress: PUSSY_LIBRARY_CONFIG_CHAINS_MAINNET.nonfungiblePositionManager,
-        tickLensAddress: PUSSY_LIBRARY_CONFIG_CHAINS_MAINNET.tickLens,
-        swapRouter02Address: PUSSY_LIBRARY_CONFIG_CHAINS_MAINNET.swapRouter02,
-        v1MixedRouteQuoterAddress: PUSSY_LIBRARY_CONFIG_CHAINS_MAINNET.v1MixedRouteQuoter
+        v3CoreFactoryAddress: PUSSY_LIBRARY_CONFIG_CHAINS_MAINNET.addresses.v3CoreFactory,
+        multicallAddress: PUSSY_LIBRARY_CONFIG_CHAINS_MAINNET.addresses.multicall,
+        quoterAddress: PUSSY_LIBRARY_CONFIG_CHAINS_MAINNET.addresses.quoter,
+        v3MigratorAddress: PUSSY_LIBRARY_CONFIG_CHAINS_MAINNET.addresses.v3Migrator,
+        nonfungiblePositionManagerAddress: PUSSY_LIBRARY_CONFIG_CHAINS_MAINNET.addresses.nonfungiblePositionManager,
+        tickLensAddress: PUSSY_LIBRARY_CONFIG_CHAINS_MAINNET.addresses.tickLens,
+        swapRouter02Address: PUSSY_LIBRARY_CONFIG_CHAINS_MAINNET.addresses.swapRouter02,
+        v1MixedRouteQuoterAddress: PUSSY_LIBRARY_CONFIG_CHAINS_MAINNET.addresses.v1MixedRouteQuoter
       }
     : {})
 }
@@ -82,14 +81,14 @@ const HARDHAT_ADDRESSES: ChainAddresses = {
   v1MixedRouteQuoterAddress: '0x84E44095eeBfEC7793Cd7d5b57B7e401D7f1cA2E',
   ...(PUSSY_LIBRARY_CONFIG_CHAINS_HARDHAT !== undefined
     ? {
-        v3CoreFactoryAddress: PUSSY_LIBRARY_CONFIG_CHAINS_HARDHAT.v3CoreFactory,
-        multicallAddress: PUSSY_LIBRARY_CONFIG_CHAINS_HARDHAT.multicall,
-        quoterAddress: PUSSY_LIBRARY_CONFIG_CHAINS_HARDHAT.quoter,
-        v3MigratorAddress: PUSSY_LIBRARY_CONFIG_CHAINS_HARDHAT.v3Migrator,
-        nonfungiblePositionManagerAddress: PUSSY_LIBRARY_CONFIG_CHAINS_HARDHAT.nonfungiblePositionManager,
-        tickLensAddress: PUSSY_LIBRARY_CONFIG_CHAINS_HARDHAT.tickLens,
-        swapRouter02Address: PUSSY_LIBRARY_CONFIG_CHAINS_HARDHAT.swapRouter02,
-        v1MixedRouteQuoterAddress: PUSSY_LIBRARY_CONFIG_CHAINS_HARDHAT.v1MixedRouteQuoter
+        v3CoreFactoryAddress: PUSSY_LIBRARY_CONFIG_CHAINS_HARDHAT.addresses.v3CoreFactory,
+        multicallAddress: PUSSY_LIBRARY_CONFIG_CHAINS_HARDHAT.addresses.multicall,
+        quoterAddress: PUSSY_LIBRARY_CONFIG_CHAINS_HARDHAT.addresses.quoter,
+        v3MigratorAddress: PUSSY_LIBRARY_CONFIG_CHAINS_HARDHAT.addresses.v3Migrator,
+        nonfungiblePositionManagerAddress: PUSSY_LIBRARY_CONFIG_CHAINS_HARDHAT.addresses.nonfungiblePositionManager,
+        tickLensAddress: PUSSY_LIBRARY_CONFIG_CHAINS_HARDHAT.addresses.tickLens,
+        swapRouter02Address: PUSSY_LIBRARY_CONFIG_CHAINS_HARDHAT.addresses.swapRouter02,
+        v1MixedRouteQuoterAddress: PUSSY_LIBRARY_CONFIG_CHAINS_HARDHAT.addresses.v1MixedRouteQuoter
       }
     : {})
 }

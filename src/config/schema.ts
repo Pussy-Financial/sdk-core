@@ -24,8 +24,12 @@ const SchemaEcosystemAddresses = z.object({
  */
 export const SchemaPussyLibraryConfig = z.object({
   chains: z.object({
-    [ChainId.MAINNET]: SchemaEcosystemAddresses.optional(),
-    [ChainId.HARDHAT]: SchemaEcosystemAddresses.optional()
+    [ChainId.MAINNET]: z.object({
+      addresses: SchemaEcosystemAddresses
+    }).optional(),
+    [ChainId.HARDHAT]: z.object({
+      addresses: SchemaEcosystemAddresses
+    }).optional()
   })
 })
 

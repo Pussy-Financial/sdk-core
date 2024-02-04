@@ -15,8 +15,8 @@
   ],
   "module": "dist/sdk-core.esm.js",
   "scripts": {
-    "registry-local:publish": "npm publish --registry http://localhost:4873",
-    "registry-local:unpublish": " npm unpublish --force --registry http://localhost:4873 @pussyfinancial/sdk-core",
+    "registry-local:publish": "npm run build && npm publish --registry http://localhost:4873",
+    "registry-local:unpublish": "rm -rf ./dist/* && npm unpublish --force --registry http://localhost:4873 @pussyfinancial/sdk-core",
     "build": "tsdx build",
     "start": "tsdx watch",
     "test": "tsdx test",
