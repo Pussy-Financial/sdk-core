@@ -1,4 +1,9 @@
 import { ChainId, SUPPORTED_CHAINS, SupportedChainsType } from './chains'
+import {
+  PUSSY_LIBRARY_CONFIG,
+  PUSSY_LIBRARY_CONFIG_CHAINS_HARDHAT,
+  PUSSY_LIBRARY_CONFIG_CHAINS_MAINNET
+} from './config'
 
 type AddressMap = { [chainId: number]: string }
 
@@ -53,10 +58,44 @@ const DEFAULT_ADDRESSES: ChainAddresses = {
   v3MigratorAddress: '0xA5644E29708357803b5A882D272c41cC0dF92B34',
   nonfungiblePositionManagerAddress: '0xC36442b4a4522E871399CD717aBDD847Ab11FE88'
 }
+
+// Inject values from PUSSY_LIBRARY_CONFIG here
+
 const MAINNET_ADDRESSES: ChainAddresses = {
   ...DEFAULT_ADDRESSES,
-  v1MixedRouteQuoterAddress: '0x84E44095eeBfEC7793Cd7d5b57B7e401D7f1cA2E'
+  v1MixedRouteQuoterAddress: '0x84E44095eeBfEC7793Cd7d5b57B7e401D7f1cA2E',
+  ...(PUSSY_LIBRARY_CONFIG_CHAINS_MAINNET !== undefined
+    ? {
+        v3CoreFactoryAddress: PUSSY_LIBRARY_CONFIG_CHAINS_MAINNET.v3CoreFactory,
+        multicallAddress: PUSSY_LIBRARY_CONFIG_CHAINS_MAINNET.multicall,
+        quoterAddress: PUSSY_LIBRARY_CONFIG_CHAINS_MAINNET.quoter,
+        v3MigratorAddress: PUSSY_LIBRARY_CONFIG_CHAINS_MAINNET.v3Migrator,
+        nonfungiblePositionManagerAddress: PUSSY_LIBRARY_CONFIG_CHAINS_MAINNET.nonfungiblePositionManager,
+        tickLensAddress: PUSSY_LIBRARY_CONFIG_CHAINS_MAINNET.tickLens,
+        swapRouter02Address: PUSSY_LIBRARY_CONFIG_CHAINS_MAINNET.swapRouter02,
+        v1MixedRouteQuoterAddress: PUSSY_LIBRARY_CONFIG_CHAINS_MAINNET.v1MixedRouteQuoter
+      }
+    : {})
 }
+const HARDHAT_ADDRESSES: ChainAddresses = {
+  ...DEFAULT_ADDRESSES,
+  v1MixedRouteQuoterAddress: '0x84E44095eeBfEC7793Cd7d5b57B7e401D7f1cA2E',
+  ...(PUSSY_LIBRARY_CONFIG_CHAINS_HARDHAT !== undefined
+    ? {
+        v3CoreFactoryAddress: PUSSY_LIBRARY_CONFIG_CHAINS_HARDHAT.v3CoreFactory,
+        multicallAddress: PUSSY_LIBRARY_CONFIG_CHAINS_HARDHAT.multicall,
+        quoterAddress: PUSSY_LIBRARY_CONFIG_CHAINS_HARDHAT.quoter,
+        v3MigratorAddress: PUSSY_LIBRARY_CONFIG_CHAINS_HARDHAT.v3Migrator,
+        nonfungiblePositionManagerAddress: PUSSY_LIBRARY_CONFIG_CHAINS_HARDHAT.nonfungiblePositionManager,
+        tickLensAddress: PUSSY_LIBRARY_CONFIG_CHAINS_HARDHAT.tickLens,
+        swapRouter02Address: PUSSY_LIBRARY_CONFIG_CHAINS_HARDHAT.swapRouter02,
+        v1MixedRouteQuoterAddress: PUSSY_LIBRARY_CONFIG_CHAINS_HARDHAT.v1MixedRouteQuoter
+      }
+    : {})
+}
+
+//...
+
 const GOERLI_ADDRESSES: ChainAddresses = {
   ...DEFAULT_ADDRESSES,
   v1MixedRouteQuoterAddress: '0xBa60b6e6fF25488308789E6e0A65D838be34194e'
@@ -175,6 +214,7 @@ const BASE_GOERLI_ADDRESSES: ChainAddresses = {
 
 export const CHAIN_TO_ADDRESSES_MAP: Record<SupportedChainsType, ChainAddresses> = {
   [ChainId.MAINNET]: MAINNET_ADDRESSES,
+  [ChainId.HARDHAT]: HARDHAT_ADDRESSES,
   [ChainId.OPTIMISM]: OPTIMISM_ADDRESSES,
   [ChainId.ARBITRUM_ONE]: ARBITRUM_ONE_ADDRESSES,
   [ChainId.POLYGON]: POLYGON_ADDRESSES,
@@ -291,7 +331,7 @@ export const MIXED_ROUTE_QUOTER_V1_ADDRESSES: AddressMap = SUPPORTED_CHAINS.redu
 }, {})
 
 export const SWAP_ROUTER_02_ADDRESSES = (chainId: number) => {
-  if (chainId == ChainId.BNB) {
+  if (chainId == ChainId.BNB || chainId == ChainId.MAINNET || chainId == ChainId.HARDHAT) {
     return CHAIN_TO_ADDRESSES_MAP[chainId].swapRouter02Address
   }
   return '0x68b3465833fb72A70ecDF485E0e4C7bD8665Fc45'
